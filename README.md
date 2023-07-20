@@ -11,9 +11,16 @@ Before getting started, ensure that you have the following software installed: `
 1. Build the Source Code:
 
 ```bash
-go run scripts/build_optimism.go
+go run build_optimism/build_optimism.go
 ```
 This will automatically clone the Optimism Monorepo, install required modules, build the necessary packages, and generate the Optimism Monorepo and packages successfully.
+
+2. Build op-geth
+
+```bash
+go run build_op-geth/build_op-geth.go
+```
+This will automatically clone the op-geth repo, build the necessary packages, and generate the op-geth repo and packages successfully.
 
 ## Contributing
 
