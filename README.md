@@ -15,14 +15,21 @@ Before getting started, ensure that you have the following software installed: `
 ```bash
 go run build_optimism/build_optimism.go
 ```
-This will automatically clone the Optimism Monorepo, install the required modules, build the necessary packages, and generate the Optimism Monorepo and packages successfully.
+This script will automatically clone the Optimism Monorepo, install the required modules, build the necessary packages, and generate the Optimism Monorepo and packages successfully.
 
 2. Build op-geth
 
 ```bash
 go run build_op-geth/build_op-geth.go
 ```
-This will automatically clone the op-geth repo, build the necessary packages, and generate the op-geth repo and packages successfully.
+This script will automatically clone the op-geth repo, build the necessary packages, and generate the op-geth repo and packages successfully.
+
+3. Generate some keys
+
+```bash
+go run generate_keys/generate_keys.go
+```
+This script will generate the keys of each role and store them in a text file named `keys.txt` in the root directory of the project. The `keys.txt` file will contain the addresses and private keys for the Admin, Proposer, Batcher, and Sequencer accounts.
 
 ## Contributing
 
