@@ -8,12 +8,14 @@ This project is based on the [OP Stack Getting Started doc](https://stack.optimi
 
 Before getting started, ensure that you have the following software installed: `Git`, `Go`, `Node`, `Pnpm`, `Foundry`, `Make`, `jq`, and `direnv`.
 
-1. Build the Source Code:
+## Getting Started
+
+1. Build the Optimism Monorepo
 
 ```bash
 go run build_optimism/build_optimism.go
 ```
-This will automatically clone the Optimism Monorepo, install required modules, build the necessary packages, and generate the Optimism Monorepo and packages successfully.
+This will automatically clone the Optimism Monorepo, install the required modules, build the necessary packages, and generate the Optimism Monorepo and packages successfully.
 
 2. Build op-geth
 
