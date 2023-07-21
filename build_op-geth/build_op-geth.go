@@ -8,22 +8,27 @@ import (
 )
 
 func main() {
-	log.Println("Cloning the op-geth repo...")
-	cloneCmd := exec.Command("git", "clone", "https://github.com/ethereum-optimism/op-geth.git")
-	err := runCommandWithOutput(cloneCmd)
-	if err != nil {
-		log.Fatal("error cloning the op-geth repo: ", err)
+	if _, err := os.Stat("op-geth"); os.IsNotExist(err) {
+		log.Println("Cloning the op-geth repo... ")
+		cloneCmd := exec.Command("git", "clone", "https://github.com/ethereum-optimism/op-geth.git")
+		err := runCommandWithOutput(cloneCmd)
+		if err != nil {
+			log.Fatal("Error cloning the op-geth repo: ", err)
+		}
+	} else {
+		log.Println("op-geth repo is already cloned")
 	}
 
-	log.Println("building the op-geth...")
-	err = os.Chdir("../op-geth")
+	err := os.Chdir("op-geth")
 	if err != nil {
 		log.Fatal("Error changing working directory: ", err)
 	}
+
+	log.Println("Building the op-geth...")
 	makeCmd := exec.Command("make", "geth")
 	err = runCommandWithOutput(makeCmd)
 	if err != nil {
-		log.Fatal("error building the op-geth: ", err)
+		log.Fatal("Error building the op-geth: ", err)
 	}
 	log.Println("op-geth repo and packages built successfully!")
 }
