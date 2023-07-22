@@ -36,7 +36,8 @@ This script will generate the keys of each role and store them in a text file na
 ```bash
 go run configure_network/configure_network.go
 ```
-This script will automatically configure your network based on the generated keys and the provided L1 node RPC URL. It will configure `getting-started.json` in the `optimism/packages/contracts-bedrock/deploy-config` directory, which contains all the required parameters for your network setup. Make sure to fill in the correct values for the `ETH_RPC_URL` to ensure a successful deployment.
+- This script will automatically configure your network based on the generated keys and the provided L1 node RPC URL. It will configure `getting-started.json` in the `optimism/packages/contracts-bedrock/deploy-config` directory, which contains all the required parameters for your network setup. Make sure to fill in the correct values for the `ETH_RPC_URL` to ensure a successful deployment.
+- You also need to the to configure the `.envrc` file in the `optimism/packages/contracts-bedrock` directory, the `ETH_RPC_URL` should be the L1 RPC URL that you have used in the previous script, replace the `PRIVATE_KEY` with the actual private key of the `Admin` which is in the `keys.txt`, and the `DEPLOYMENT_CONTEXT` stays the same which is `getting-started`.
 
 ## Contributing
 
