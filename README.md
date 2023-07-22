@@ -1,6 +1,6 @@
 # op-stack-deployer
 
-OP Stack Deployer is a tool that simplifies the process of setting up and deploying an OP Stack chain<!-- on the Ethereum Goerli testnet -->. This guide will walk you through the steps required to spin up your own OP Stack chain and perform tests or customize it for your specific needs.
+OP Stack Deployer is a tool that simplifies the process of setting up and deploying an OP Stack chainon the Ethereum Goerli testnet. This guide will walk you through the steps required to spin up your own OP Stack chain and perform tests or customize it for your specific needs.
 
 This project is based on the [OP Stack Getting Started doc](https://stack.optimism.io/docs/build/getting-started/#).
 
@@ -38,6 +38,15 @@ go run configure_network/configure_network.go
 ```
 - This script will automatically configure your network based on the generated keys and the provided L1 node RPC URL. It will configure `getting-started.json` in the `optimism/packages/contracts-bedrock/deploy-config` directory, which contains all the required parameters for your network setup. Make sure to fill in the correct values for the `ETH_RPC_URL` to ensure a successful deployment.
 - You also need to the to configure the `.envrc` file in the `optimism/packages/contracts-bedrock` directory, the `ETH_RPC_URL` should be the L1 RPC URL that you have used in the previous script, replace the `PRIVATE_KEY` with the actual private key of the `Admin` which is in the `keys.txt`, and the `DEPLOYMENT_CONTEXT` stays the same which is `getting-started`.
+
+5. Deploy the L1 contracts
+- Before running the `deploy_L1_contracts.go` script, ensure that you have funded your Admin address with some Goerli test ETH (at least 0.5 ETH). Having sufficient test ETH will cover the gas costs and ensure the successful deployment of the L1 contracts.
+
+- Now you can run the script :
+```bash
+go run deploy_L1_contracts/deploy_L1_contracts.go
+```
+The script will start deploying all the L1 smart contracts. During the deployment process, you may see various transaction logs and updates. Once the deployment is successful, you will receive a confirmation message.
 
 ## Contributing
 
