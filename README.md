@@ -48,6 +48,12 @@ go run deploy_L1_contracts/deploy_L1_contracts.go
 ```
 The script will start deploying all the L1 smart contracts. During the deployment process, you may see various transaction logs and updates. Once the deployment is successful, you will receive a confirmation message.
 
+6. Generate the L2 config files
+```bash
+sudo go run L2_config/L2_config.go
+```
+This script will automatically create the necessary L2 configuration files `genesis.json`, `rollup.json`, and `jwt.txt`. These files are crucial for the configuration and secure communication between the op-node and op-geth.
+
 ## Contributing
 
 Contributions to Op-Stack Deployer are welcome! If you find any issues or have ideas for improvements, please open an issue or submit a pull request.
