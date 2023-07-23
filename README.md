@@ -54,6 +54,12 @@ sudo go run L2_config/L2_config.go
 ```
 This script will automatically create the necessary L2 configuration files `genesis.json`, `rollup.json`, and `jwt.txt`. These files are crucial for the configuration and secure communication between the op-node and op-geth.
 
+7. Initialize op-geth
+```bash
+go run Initialize_op-geth/initialize_op-geth.go
+```
+This script will create a data directory and initialize the op-geth with the `genesis.json` that we have generated in the previous script.
+
 ## Contributing
 
 Contributions to Op-Stack Deployer are welcome! If you find any issues or have ideas for improvements, please open an issue or submit a pull request.
