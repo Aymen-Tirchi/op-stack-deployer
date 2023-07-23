@@ -73,12 +73,12 @@ func main() {
 	}
 
 	log.Println("copying genesis.json and rollup.json into op-geth... ")
-	copyCmd1 := exec.Command("cp", "genesis.json", "/op-geth")
+	copyCmd1 := exec.Command("cp", "genesis.json", "../../op-geth")
 	err = runCommandWithOutput(copyCmd1)
 	if err != nil {
 		log.Fatal("error copying genesis.json: ", err)
 	}
-	copyCmd2 := exec.Command("cp", "jwt.txt", "/op-geth")
+	copyCmd2 := exec.Command("cp", "jwt.txt", "../../op-geth")
 	err = runCommandWithOutput(copyCmd2)
 	if err != nil {
 		log.Fatal("error copying jwt.txt: ", err)
