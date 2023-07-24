@@ -37,7 +37,7 @@ This script will generate the keys of each role and store them in a text file na
 go run configure_network/configure_network.go
 ```
 - This script will automatically configure your network based on the generated keys and the provided L1 node RPC URL. It will configure `getting-started.json` in the `optimism/packages/contracts-bedrock/deploy-config` directory, which contains all the required parameters for your network setup. Make sure to fill in the correct values for the `ETH_RPC_URL` to ensure a successful deployment.
-- You also need to the to configure the `.envrc` file in the `optimism/packages/contracts-bedrock` directory, the `ETH_RPC_URL` should be the L1 RPC URL that you have used in the previous script, replace the `PRIVATE_KEY` with the actual private key of the `Admin` which is in the `keys.txt`, and the `DEPLOYMENT_CONTEXT` stays the same which is `getting-started`.
+- You also need to configure the `.envrc` file in the `optimism/packages/contracts-bedrock` directory, the `ETH_RPC_URL` should be the L1 RPC URL that you have used in the previous script, replace the `PRIVATE_KEY` with the actual private key of the `Admin` which is in the `keys.txt`, and the `DEPLOYMENT_CONTEXT` stays the same which is `getting-started`.
 
 5. Deploy the L1 contracts
 - Before running the `deploy_L1_contracts.go` script, ensure that you have funded your Admin address with some Goerli test ETH (at least 0.5 ETH). Having sufficient test ETH will cover the gas costs and ensure the successful deployment of the L1 contracts.
@@ -58,30 +58,30 @@ This script will automatically create the necessary L2 configuration files `gene
 ```bash
 go run Initialize_op-geth/initialize_op-geth.go
 ```
-This script will create a data directory and initialize the op-geth with the `genesis.json` that we have generated in the previous script.
+This script will create a data directory and initialize the op-geth with the `genesis.json` we generated in the previous script.
 
 8. Run the node software
 - Before running op-geth, ensure you've exported the following environment variables:
 ```bash
 export SEQ_KEY=<Sequencer PrivateKey>
 ```
-Replace `<Sequencer PrivateKey>` withe the actual sequencer Private keys from `keys.txt`.
+Replace `<Sequencer PrivateKey>` with the actual Sequencer Private key from `keys.txt`.
 ```bash
 export BATCHER_KEY=<Batcher PrivateKey>
 ```
-Replace `<Batcher PrivateKey>` withe the actual batcher Private keys from `keys.txt`.
+Replace `<Batcher PrivateKey>` with the actual Batcher Private key from `keys.txt`.
 ```bash
 export PROPOSER_KEY=<Proposer PrivateKey>
 ```
-Replace `<Proposer PrivateKey>` withe the actual proposer Private keys from `keys.txt`.
+Replace `<Proposer PrivateKey>` with the actual Proposer Private key from `keys.txt`.
 ```bash
 export L1_RPC=<ETH_RPC_URL>
 ```
-Replace `<ETH_RPC_URL>` with URL for the L1 (such as Goerli) you're using.
+Replace `<ETH_RPC_URL>` with the URL for the L1 (such as Goerli) you're using.
 ```bash
 export RPC_KIND=<L1 server>
 ```
-Replace `<L1 server>` withe The type of L1 server to which you connecting (e.g., `alchemy`, `quicknode`).
+Replace `<L1 server>` with The type of L1 server to which you connecting (e.g., `alchemy`, `quicknode`).
 ```bash
 export L2OO_ADDR=<L2OutputOracleProxy address>
 ```
@@ -95,7 +95,7 @@ This script will run the op-geth node.
 
 ## Contributing
 
-Contributions to Op-Stack Deployer are welcome! If you find any issues or have ideas for improvements, please open an issue or submit a pull request.
+Contributions to Op-Stack Deployer are welcome! If you have any issues or ideas for improvements, please open an issue or submit a pull request.
 
 ## License
 
