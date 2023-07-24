@@ -60,6 +60,33 @@ go run Initialize_op-geth/initialize_op-geth.go
 ```
 This script will create a data directory and initialize the op-geth with the `genesis.json` that we have generated in the previous script.
 
+8. Run the node software
+- Before running op-geth, ensure you've exported the following environment variables:
+```bash
+export SEQ_KEY=<Sequencer PrivateKey>
+```
+Replace `<Sequencer PrivateKey>` withe the actual sequencer Private keys from `keys.txt`.
+```bash
+export BATCHER_KEY=<Batcher PrivateKey>
+```
+Replace `<Batcher PrivateKey>` withe the actual batcher Private keys from `keys.txt`.
+```bash
+export PROPOSER_KEY=<Proposer PrivateKey>
+```
+Replace `<Proposer PrivateKey>` withe the actual proposer Private keys from `keys.txt`.
+```bash
+export L1_RPC=<ETH_RPC_URL>
+```
+Replace `<ETH_RPC_URL>` with URL for the L1 (such as Goerli) you're using.
+```bash
+export RPC_KIND=<L1 server>
+```
+Replace `<L1 server>` withe The type of L1 server to which you connecting (e.g., `alchemy`, `quicknode`).
+```bash
+export L2OO_ADDR=<L2OutputOracleProxy address>
+```
+Replace `<L2OutputOracleProxy address>` with the actual address of `L2OutputOracleProxy` found in `optimism/packages/contracts-bedrock/deployments/goerli/L2OutputOracleProxy.json`.
+
 ## Contributing
 
 Contributions to Op-Stack Deployer are welcome! If you find any issues or have ideas for improvements, please open an issue or submit a pull request.
