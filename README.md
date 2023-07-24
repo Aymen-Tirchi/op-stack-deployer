@@ -87,6 +87,12 @@ export L2OO_ADDR=<L2OutputOracleProxy address>
 ```
 Replace `<L2OutputOracleProxy address>` with the actual address of `L2OutputOracleProxy` found in `optimism/packages/contracts-bedrock/deployments/goerli/L2OutputOracleProxy.json`.
 
+- Run op-geth 
+```bash
+go run run_op-geth/run_op-geth.go
+```
+This script will run the op-geth node.
+
 ## Contributing
 
 Contributions to Op-Stack Deployer are welcome! If you find any issues or have ideas for improvements, please open an issue or submit a pull request.
