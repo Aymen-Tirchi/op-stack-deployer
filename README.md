@@ -93,6 +93,12 @@ go run run_op-geth/run_op-geth.go
 ```
 This script will run the op-geth node.
 
+- Run op-node
+```bash
+go run run_op-node/run_op-node.go
+```
+This script will run the op-node.
+
 ## Contributing
 
 Contributions to Op-Stack Deployer are welcome! If you have any issues or ideas for improvements, please open an issue or submit a pull request.
