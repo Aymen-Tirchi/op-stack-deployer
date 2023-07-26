@@ -99,6 +99,9 @@ go run run_op-node/run_op-node.go
 ```
 This script will run the op-node.
 
+- Run op-batcher
+Before running `op-batcher` make sure you fund your batcher address with at least 1 Goerli test ETH, to ensure that it can continue operating without running out of ETH for gas.
+
 ## Contributing
 
 Contributions to Op-Stack Deployer are welcome! If you have any issues or ideas for improvements, please open an issue or submit a pull request.
