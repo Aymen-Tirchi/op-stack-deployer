@@ -101,6 +101,10 @@ This script will run the op-node.
 
 - Run op-batcher
 Before running `op-batcher` make sure you fund your batcher address with at least 1 Goerli test ETH, to ensure that it can continue operating without running out of ETH for gas.
+and then you can start the op-batcher 
+```bash
+go run run_op-batcher/run_op-batcher.go
+```
 
 ## Contributing
 
