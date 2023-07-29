@@ -58,7 +58,7 @@ This script will automatically create the necessary L2 configuration files `gene
 ```bash
 go run Initialize_op-geth/initialize_op-geth.go
 ```
-This script will create a data directory and initialize the op-geth with the `genesis.json` we generated in the previous script.
+This script will create a data directory and initialize the `op-geth` with the `genesis.json` we generated in the previous script.
 
 8. Run the node software
 - Run op-geth 
@@ -66,33 +66,6 @@ This script will create a data directory and initialize the op-geth with the `ge
 go run run_op-geth/run_op-geth.go
 ```
 This script will run the op-geth node.
-
-- Before running op-node, ensure you've exported the following environment variables:
-```bash
-export SEQ_KEY=<Sequencer PrivateKey>
-```
-Replace `<Sequencer PrivateKey>` with the actual Sequencer Private key from `keys.txt`.
-```bash
-export BATCHER_KEY=<Batcher PrivateKey>
-```
-Replace `<Batcher PrivateKey>` with the actual Batcher Private key from `keys.txt`.
-```bash
-export PROPOSER_KEY=<Proposer PrivateKey>
-```
-Replace `<Proposer PrivateKey>` with the actual Proposer Private key from `keys.txt`.
-```bash
-export L1_RPC=<ETH_RPC_URL>
-```
-Replace `<ETH_RPC_URL>` with the URL for the L1 (such as Goerli) you're using.
-```bash
-export RPC_KIND=<L1 server>
-```
-Replace `<L1 server>` with The type of L1 server to which you connecting (e.g., `alchemy`, `quicknode`).
-```bash
-export L2OO_ADDR=<L2OutputOracleProxy address>
-```
-Replace `<L2OutputOracleProxy address>` with the actual address of `L2OutputOracleProxy` found in `optimism/packages/contracts-bedrock/deployments/goerli/L2OutputOracleProxy.json`.
-
 - Run op-node
 
 Before running op-node, ensure you've exported the following environment variables:
@@ -108,6 +81,7 @@ Replace `<ETH_RPC_URL>` with the URL for the L1 (such as Goerli) you're using.
 export RPC_KIND=<L1 server>
 ```
 Replace `<L1 server>` with The type of L1 server to which you connecting (e.g., `alchemy`, `quicknode`).
+
 and then run this command: 
 ```bash
 go run run_op-node/run_op-node.go
@@ -127,6 +101,7 @@ export L1_RPC=<ETH_RPC_URL>
 Replace `<ETH_RPC_URL>` with the URL for the L1 (such as Goerli) you're using.
 
 And make sure you fund your batcher address with at least 1 Goerli test ETH, to ensure that it can continue operating without running out of ETH for gas.
+
 and then run this command: 
 ```bash
 go run run_op-batcher/run_op-batcher.go
@@ -144,6 +119,7 @@ Replace `<Proposer PrivateKey>` with the actual Proposer Private key from `keys.
 export L2OO_ADDR=<L2OutputOracleProxy address>
 ```
 Replace `<L2OutputOracleProxy address>` with the actual address of `L2OutputOracleProxy` found in `optimism/packages/contracts-bedrock/deployments/goerli/L2OutputOracleProxy.json`.
+
 and then run this command: 
 
 ## Contributing
