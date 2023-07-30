@@ -116,11 +116,27 @@ export PROPOSER_KEY=<Proposer PrivateKey>
 ```
 Replace `<Proposer PrivateKey>` with the actual Proposer Private key from `keys.txt`.
 ```bash
+export L1_RPC=<ETH_RPC_URL>
+```
+Replace `<ETH_RPC_URL>` with the URL for the L1 (such as Goerli) you're using.
+```bash
 export L2OO_ADDR=<L2OutputOracleProxy address>
 ```
 Replace `<L2OutputOracleProxy address>` with the actual address of `L2OutputOracleProxy` found in `optimism/packages/contracts-bedrock/deployments/goerli/L2OutputOracleProxy.json`.
 
 and then run this command: 
+```bash
+go run run_op-proposer/run_op-proposer.go
+```
+This script will run the op-proposer.
+
+9. Get some ETH on your Rollup
+
+To get the address of your rollup run the following command
+```bash
+go run get_rollup_address/get_rollup_address.go
+```
+and know you can fund your rollup address with some ETH. It may take up to 5 minutes for that ETH to appear in your wallet on L2.
 
 ## Contributing
 
