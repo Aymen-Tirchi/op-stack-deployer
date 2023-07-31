@@ -138,6 +138,23 @@ go run get_rollup_address/get_rollup_address.go
 ```
 and know you can fund your rollup address with some ETH. It may take up to 5 minutes for that ETH to appear in your wallet on L2.
 
+Congratulations, You have a complete OP Stack based EVM Rollup.
+
+10. Use your Rollup
+
+- Before starting set Set RPC URL and the contract address.
+```bash
+export ETH_RPC_URL=<ETH_RPC_URL>
+```
+```bash
+export GREETER=0x575E9B4f2c3945d7CF07cb76628d29DF471692B8
+```
+
+- And then run this command: 
+```bash
+go run rollup/rollup.go
+```
+
 ## Contributing
 
 Contributions to Op-Stack Deployer are welcome! If you have any issues or ideas for improvements, please open an issue or submit a pull request.
