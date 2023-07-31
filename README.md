@@ -142,7 +142,7 @@ Congratulations, You have a complete OP Stack based EVM Rollup.
 
 10. Use your Rollup
 
-- Before starting set Set RPC URL and the contract address.
+- Before getting started set RPC URL and the contract address.
 ```bash
 export ETH_RPC_URL=<ETH_RPC_URL>
 ```
