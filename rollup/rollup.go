@@ -16,7 +16,7 @@ func runCommand(cmdStr string) error {
 	return cmd.Run()
 }
 
-var GREETER = "575E9B4f2c3945d7CF07cb76628d29DF471692B8"
+// var GREETER = "575E9B4f2c3945d7CF07cb76628d29DF471692B8"
 
 func main() {
 	if _, err := os.Stat("optimism-tutorial"); os.IsNotExist(err) {
