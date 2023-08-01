@@ -142,7 +142,9 @@ Congratulations, You have a complete OP Stack based EVM Rollup.
 
 10. Use your Rollup
 
-- Before getting started set RPC URL and the contract address.
+To see your rollup in action, you can use the [optimism-tutorial](https://github.com/ethereum-optimism/optimism-tutorial/tree/main).
+
+- Before running the script set the RPC URL and the contract address.
 ```bash
 export ETH_RPC_URL=<ETH_RPC_URL>
 ```
@@ -154,7 +156,8 @@ export GREETER=0x575E9B4f2c3945d7CF07cb76628d29DF471692B8
 ```bash
 go run rollup/rollup.go
 ```
-To see your rollup in action, you can use the [optimism-tutorial](https://github.com/ethereum-optimism/optimism-tutorial/tree/main).
+This script will clone the optimism-tutorial repository and ask for the mnemonic phrase of your wallet and then store it in `mnem.delme` file. 
+
 ## Contributing
 
 Contributions to Op-Stack Deployer are welcome! If you have any issues or ideas for improvements, please open an issue or submit a pull request.
