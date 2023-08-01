@@ -1,6 +1,6 @@
 # op-stack-deployer
 
-OP Stack Deployer is a tool that simplifies the process of setting up and deploying an OP Stack chainon the Ethereum Goerli testnet. This guide will walk you through the steps required to spin up your own OP Stack chain and perform tests or customize it for your specific needs.
+OP Stack Deployer is a tool that simplifies the process of setting up and deploying an OP Stack chain on the Ethereum Goerli testnet. This guide will walk you through the steps required to spin up your own OP Stack chain and perform tests or customize it for your specific needs.
 
 This project is based on the [OP Stack Getting Started doc](https://stack.optimism.io/docs/build/getting-started/#).
 
@@ -29,7 +29,7 @@ This script will automatically clone the op-geth repo, build the necessary packa
 ```bash
 go run generate_keys/generate_keys.go
 ```
-This script will generate the keys of each role and store them in a text file named `keys.txt` in the root directory of the project. The `keys.txt` file will contain the addresses and private keys for the Admin, Proposer, Batcher, and Sequencer accounts.
+This script will generate the keys of each role and store them in a text file named `keys.txt` in the root directory of the project. The `keys.txt` file will contain the addresses and private keys for the `Admin`, `Proposer`, `Batcher`, and `Sequencer` accounts.
 
 4. Configure your network
 
@@ -154,7 +154,7 @@ export GREETER=0x575E9B4f2c3945d7CF07cb76628d29DF471692B8
 ```bash
 go run rollup/rollup.go
 ```
-
+To see your rollup in action, you can use the [optimism-tutorial](https://github.com/ethereum-optimism/optimism-tutorial/tree/main).
 ## Contributing
 
 Contributions to Op-Stack Deployer are welcome! If you have any issues or ideas for improvements, please open an issue or submit a pull request.
