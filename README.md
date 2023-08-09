@@ -48,6 +48,8 @@ go run configure_network/configure_network.go
 5. Deploy the L1 contracts
 - Before running the `deploy_L1_contracts.go` script, ensure that you have funded your Admin address with some Goerli test ETH (at least 0.5 ETH). Having sufficient test ETH will cover the gas costs and ensure the successful deployment of the L1 contracts.
 
+#### Note: when you copy any privateKey make sure you copy it without `0x`
+
 - Now you can run the script :
 ```bash
 go run deploy_L1_contracts/deploy_L1_contracts.go
