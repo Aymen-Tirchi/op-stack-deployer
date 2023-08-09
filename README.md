@@ -1,6 +1,6 @@
 # op-stack-deployer
 
-OP Stack Deployer is a tool that simplifies the process of setting up and deploying an OP Stack chain on the Ethereum Goerli testnet. This guide will walk you through the steps required to spin up your own OP Stack chain and perform tests or customize it for your specific needs.
+OP Stack Deployer is a tool that simplifies setting up and deploying an OP Stack chain on the Ethereum Goerli testnet. This guide will walk you through the steps required to spin up your OP Stack chain and perform tests or customize it for your specific needs.
 
 This project is based on the [OP Stack Getting Started doc](https://stack.optimism.io/docs/build/getting-started/#).
 
@@ -9,6 +9,12 @@ This project is based on the [OP Stack Getting Started doc](https://stack.optimi
 Before getting started, ensure that you have the following software installed: `Git`, `Go`, `Node`, `Pnpm`, `Foundry`, `Make`, `jq`, and `direnv`.
 
 ## Getting Started
+
+First of all clone the op-stack-deployer repository
+```bash
+git clone https://github.com/Aymen-Tirchi/op-stack-deployer.git && cd op-stack-deployer
+```
+And then follow these steps: 
 
 1. Build the Optimism Monorepo
 
