@@ -53,23 +53,31 @@ func main() {
 	fmt.Println("Enter the L1 node URL (ETH_RPC_URL) again :< :")
 	fmt.Scan(&rpcURL)
 
-	log.Println("Creating genesis.json and rollup.json... ")
-	runCmd := exec.Command("go", "run", opNodeDir, "genesis", "l2",
-		"--deploy-config", deployConfigDir,
-		"--deployment-dir", gettingStartedDir,
-		"--outfile.l2", "genesis.json",
-		"--outfile.rollup", "rollup.json",
-		"--l1-rpc", rpcURL)
-	err = runCommandWithOutput(runCmd)
-	if err != nil {
-		log.Fatal("error creating genesis.json and rollup.json: ", err)
+	if _, err := os.Stat("genesis.json"); os.IsNotExist(err) {
+		log.Println("Creating genesis.json and rollup.json... ")
+		runCmd := exec.Command("go", "run", opNodeDir, "genesis", "l2",
+			"--deploy-config", deployConfigDir,
+			"--deployment-dir", gettingStartedDir,
+			"--outfile.l2", "genesis.json",
+			"--outfile.rollup", "rollup.json",
+			"--l1-rpc", rpcURL)
+		err = runCommandWithOutput(runCmd)
+		if err != nil {
+			log.Fatal("error creating genesis.json and rollup.json: ", err)
+		}
+	} else {
+		log.Fatal("genesis.json already exists")
 	}
-
-	log.Println("generating jwt.txt file... ")
-	jwtCmd := exec.Command("sh", "-c", "openssl rand -hex 32 > jwt.txt")
-	err = runCommandWithOutput(jwtCmd)
-	if err != nil {
-		log.Fatal("error generating jwt.txt: ", err)
+	
+	if _, err := os.Stat("jwt.txt"); os.IsNotExist(err) {
+		log.Println("generating jwt.txt file... ")
+		jwtCmd := exec.Command("sh", "-c", "openssl rand -hex 32 > jwt.txt")
+		err = runCommandWithOutput(jwtCmd)
+		if err != nil {
+			log.Fatal("error generating jwt.txt: ", err)
+		}
+	} else {
+		log.Fatal("jwt.txt already exists")
 	}
 
 	log.Println("copying genesis.json and rollup.json into op-geth... ")
