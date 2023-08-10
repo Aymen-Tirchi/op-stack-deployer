@@ -39,16 +39,15 @@ This script will generate the keys of each role and store them in a text file na
 
 4. Configure your network
 
+- Before you run the script make sure to configure the `.envrc` file in the `optimism/packages/contracts-bedrock` directory, the `ETH_RPC_URL` should be the L1 RPC URL that you are using, replace the `PRIVATE_KEY` with the actual private key of the `Admin` which is in the `keys.txt`, and the `DEPLOYMENT_CONTEXT` stays the same which is `getting-started`.
+
 ```bash
 go run configure_network/configure_network.go
 ```
-- This script will automatically configure your network based on the generated keys and the provided L1 node RPC URL. It will configure `getting-started.json` in the `optimism/packages/contracts-bedrock/deploy-config` directory, which contains all the required parameters for your network setup. Make sure to fill in the correct values for the `ETH_RPC_URL` to ensure a successful deployment.
-- You also need to configure the `.envrc` file in the `optimism/packages/contracts-bedrock` directory, the `ETH_RPC_URL` should be the L1 RPC URL that you have used in the previous script, replace the `PRIVATE_KEY` with the actual private key of the `Admin` which is in the `keys.txt`, and the `DEPLOYMENT_CONTEXT` stays the same which is `getting-started`.
+- This script will automatically configure your network based on the generated keys and the provided L1 node RPC URL. It will configure `getting-started.json` in the `optimism/packages/contracts-bedrock/deploy-config` directory, which contains all the required parameters for your network setup.
 
 5. Deploy the L1 contracts
 - Before running the `deploy_L1_contracts.go` script, ensure that you have funded your Admin address with some Goerli test ETH (at least 0.5 ETH). Having sufficient test ETH will cover the gas costs and ensure the successful deployment of the L1 contracts.
-
-#### Note: when you copy any privateKey make sure you copy it without `0x`
 
 - Now you can run the script :
 ```bash
@@ -75,6 +74,8 @@ go run run_op-geth/run_op-geth.go
 ```
 This script will run the op-geth node.
 - Run op-node
+
+#### Note: when you copy any privateKey make sure you copy it without `0x`
 
 Before running op-node, ensure you've exported the following environment variables:
 ```bash

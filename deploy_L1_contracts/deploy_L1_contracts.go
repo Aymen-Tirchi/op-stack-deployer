@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+  "github.com/joho/godotenv"
 )
 
 type GoerliConfig struct {
@@ -128,15 +129,12 @@ func main() {
 
 	fmt.Println("goerli.json updated successfully!")
 
-	var privateKeyAdmin, rpcURL string
-
-	fmt.Println("Enter the private key of the Admin: ")
-	fmt.Scan(&privateKeyAdmin)
-	fmt.Println("Enter the L1 node URL (ETH_RPC_URL): ")
-	fmt.Scan(&rpcURL)
-	if privateKeyAdmin == "" || rpcURL == "" {
-		log.Fatal("The private key and/or RPC URL are not set")
+  if err := godotenv.Load(".envrc"); err != nil {
+		log.Fatal("Error loading environment variables from .envrc: ", err)
 	}
+
+  rpcURL := os.Getenv("ETH_RPC_URL")
+  privateKeyAdmin := os.Getenv("PRIVATE_KEY")
 
 	log.Println("Deploying the L1 smart contracts...")
 

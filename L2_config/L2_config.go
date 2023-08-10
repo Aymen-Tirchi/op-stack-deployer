@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"github.com/joho/godotenv"
 )
 
 const (
@@ -36,6 +37,11 @@ func changeWorkingDirectory(dir string) error {
 }
 
 func main() {
+
+	if err := godotenv.Load("optimism/packages/contracts-bedrock/.envrc"); err != nil {
+		log.Fatal("Error loading environment variables from .envrc: ", err)
+	}
+
 	scriptDir, err := os.Getwd()
 	if err != nil {
 		log.Fatal("Failed to get the current working directory: ", err)
@@ -48,10 +54,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	var rpcURL string
-
-	fmt.Println("Enter the L1 node URL (ETH_RPC_URL) again :< :")
-	fmt.Scan(&rpcURL)
+	rpcURL := os.Getenv("ETH_RPC_URL")
 
 	if _, err := os.Stat("genesis.json"); os.IsNotExist(err) {
 		log.Println("Creating genesis.json and rollup.json... ")

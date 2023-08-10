@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+	"github.com/joho/godotenv"
 )
 
 type Addresses struct {
@@ -64,9 +65,9 @@ func getBlockInfo(rpcURL string) (BlockInfo, error) {
 	var blockInfo BlockInfo
 
 	cmd := exec.Command("cast", "block", "finalized", "--rpc-url", rpcURL)
-	output, err := cmd.Output()
+	output, err := cmd.CombinedOutput()  // This captures both standard output and error
 	if err != nil {
-		return blockInfo, fmt.Errorf("failed to execute the cast command: %v", err)
+		return blockInfo, fmt.Errorf("failed to execute the cast command: %v, output: %s", err, output)
 	}
 
 	lines := strings.Split(string(output), "\n")
@@ -88,15 +89,16 @@ func main() {
 	log.Println("Entering the contracts-bedrock package...")
 	os.Chdir("optimism/packages/contracts-bedrock")
 
-	log.Println("Copying the environment file...")
-	cpCmd := exec.Command("cp", ".envrc.example", ".envrc")
-	err := cpCmd.Run()
-	if err != nil {
-		log.Fatal("Error copying the environment file: ", err)
-	}
+  if _, err:= os.Stat(".envrc"); os.IsNotExist(err) {
+    log.Println("Copying the environment file...")
+    cpCmd := exec.Command("cp", ".envrc.example", ".envrc")
+    err := cpCmd.Run()
+    if err != nil {
+      log.Fatal("Error copying the environment file: ", err)
+    }
+  }
 
-	err = loadEnvFromFile(".envrc")
-	if err != nil {
+	if err := godotenv.Load(".envrc"); err != nil {
 		log.Fatal("Error loading environment variables from .envrc: ", err)
 	}
 
@@ -107,12 +109,12 @@ func main() {
 	}
 
 	// Get block information using the cast command
-	var rpcURL string
-	fmt.Println("Enter the L1 node URL (ETH_RPC_URL): ")
-	fmt.Scan(&rpcURL)
+	rpcURL := os.Getenv("ETH_RPC_URL")
+
+	// Get block information using the cast command
 	blockInfo, err := getBlockInfo(rpcURL)
 	if err != nil {
-		log.Fatal("Error getting block information: ", err)
+		log.Fatalf("Error getting block information: %v", err)
 	}
 
 	// Generate the configuration data
@@ -182,24 +184,4 @@ func main() {
 	}
 
 	log.Printf("Configuration file has been updated and saved to %s\n", outputFilePath)
-}
-func loadEnvFromFile(filename string) error {
-	data, err := os.ReadFile(filename)
-	if err != nil {
-		return err
-	}
-
-	lines := strings.Split(string(data), "\n")
-	for _, line := range lines {
-		if strings.TrimSpace(line) != "" {
-			parts := strings.SplitN(line, "=", 2)
-			if len(parts) == 2 {
-				key := strings.TrimSpace(parts[0])
-				value := strings.TrimSpace(parts[1])
-				os.Setenv(key, value)
-			}
-		}
-	}
-
-	return nil
 }
