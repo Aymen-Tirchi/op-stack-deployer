@@ -146,7 +146,7 @@ go run run_op-proposer/run_op-proposer.go
 ```
 This script will run the op-proposer.
 
-checkout this [Rollup Operations](https://stack.optimism.io/docs/build/operations/#) 
+check out this [Rollup Operations](https://stack.optimism.io/docs/build/operations/#) 
 
 9. Get some ETH on your Rollup
 
