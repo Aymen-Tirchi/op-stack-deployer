@@ -150,13 +150,13 @@ checkout this [Rollup Operations](https://stack.optimism.io/docs/build/operation
 
 9. Get some ETH on your Rollup
 
-To get the address of your rollup run the following command
+To get the address of your Rollup run the following command
 ```bash
 go run get_rollup_address/get_rollup_address.go
 ```
-and know you can fund your rollup address with some ETH. It may take up to 5 minutes for that ETH to appear in your wallet on L2.
+and now you can fund your rollup address with some ETH. It may take up to 5 minutes for that ETH to appear in your wallet on L2.
 
-Congratulations, You have a complete OP Stack based EVM Rollup.
+Congratulations, You have a complete OP Stack-based EVM Rollup.
 
 10. Use your Rollup
 
