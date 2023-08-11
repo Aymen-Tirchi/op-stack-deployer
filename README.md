@@ -117,6 +117,13 @@ go run run_op-batcher/run_op-batcher.go
 ```
 This script will run the op-batcher.
 
+might have warning messages similar to: 
+```bash
+WARN [03-21|14:13:55.248] Error calculating L2 block range         err="failed to get sync status: Post \"http://localhost:8547\": context deadline exceeded"
+WARN [03-21|14:13:57.328] Error calculating L2 block range         err="failed to get sync status: Post \"http://localhost:8547\": context deadline exceeded"
+```
+This means that `op-node` is not yet synchronized up to the present time. Just wait until it is.
+
 - Run op-proposer
 
 Before running op-proposer, ensure you've exported the following environment variables:
@@ -139,6 +146,8 @@ go run run_op-proposer/run_op-proposer.go
 ```
 This script will run the op-proposer.
 
+checkout this [Rollup Operations](https://stack.optimism.io/docs/build/operations/#) 
+
 9. Get some ETH on your Rollup
 
 To get the address of your rollup run the following command
@@ -153,7 +162,7 @@ Congratulations, You have a complete OP Stack based EVM Rollup.
 
 To see your rollup in action, you can use the [optimism-tutorial](https://github.com/ethereum-optimism/optimism-tutorial/tree/main).
 
-- Before running the script set the RPC URL and the contract address.
+<!-- - Before running the script set the RPC URL and the contract address.
 ```bash
 export ETH_RPC_URL=<ETH_RPC_URL>
 ```
@@ -165,7 +174,7 @@ export GREETER=0x575E9B4f2c3945d7CF07cb76628d29DF471692B8
 ```bash
 go run rollup/rollup.go
 ```
-This script will clone the optimism-tutorial repository and ask for the mnemonic phrase of your wallet and then store it in `mnem.delme` file. 
+This script will clone the optimism-tutorial repository and ask for the mnemonic phrase of your wallet and then store it in `mnem.delme` file.  -->
 
 ## Contributing
 
