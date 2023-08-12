@@ -39,7 +39,7 @@ This script will generate the keys of each role and store them in a text file na
 
 4. Configure your network
 
-- Before you run the script make sure to configure the `.envrc` file in the `optimism/packages/contracts-bedrock` directory, the `ETH_RPC_URL` should be the L1 RPC URL that you are using, replace the `PRIVATE_KEY` with the actual private key of the `Admin` which is in the `keys.txt`, and the `DEPLOYMENT_CONTEXT` stays the same which is `getting-started`.
+- Before you run the script go to this path `optimism/packages/contracts-bedrock` you will find `.envrc.example` remove `.example` part from it and then enter the `.envrc` file, set the `ETH_RPC_URL` that you are using, and replace the `PRIVATE_KEY` with the actual private key of the `Admin` which is in the `keys.txt`, and the `DEPLOYMENT_CONTEXT` stays the same which is `getting-started`.
 
 ```bash
 go run configure_network/configure_network.go
