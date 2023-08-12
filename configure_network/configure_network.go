@@ -1,11 +1,16 @@
 package main
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 	"os/exec"
+	"strconv"
 	"strings"
+
 	"github.com/joho/godotenv"
 )
 
@@ -14,6 +19,10 @@ type Addresses struct {
 	Proposer  string
 	Batcher   string
 	Sequencer string
+}
+
+type EthChainIdResponse struct {
+	Result string `json:"result"`
 }
 
 func readAddresses(filename string) (Addresses, error) {
@@ -84,6 +93,40 @@ func getBlockInfo(rpcURL string) (BlockInfo, error) {
 	return blockInfo, nil
 }
 
+func getChainId(rpcURL string) (int, error) {
+	payload := map[string]interface{}{
+		"jsonrpc": "2.0",
+		"id":      1,
+		"method":  "eth_chainId",
+		"params":  []interface{}{},
+	}
+
+	payloadBytes, err := json.Marshal(payload)
+	if err != nil {
+		return 0, err
+	}
+
+	response, err := http.Post(rpcURL, "application/json", bytes.NewBuffer(payloadBytes))
+	if err != nil {
+		return 0, err
+	}
+	defer response.Body.Close()
+
+	var chainIdResponse EthChainIdResponse
+	if err := json.NewDecoder(response.Body).Decode(&chainIdResponse); err != nil {
+		return 0, err
+	}
+
+	// Convert the hexadecimal chain ID to an integer
+	chainIdInt, err := strconv.ParseInt(chainIdResponse.Result[2:], 16, 64)
+	if err != nil {
+		return 0, err
+	}
+
+	return int(chainIdInt), nil
+}
+
+
 func main() {
 
 	log.Println("Entering the contracts-bedrock package...")
@@ -117,6 +160,11 @@ func main() {
 		log.Fatalf("Error getting block information: %v", err)
 	}
 
+	chainId, err := getChainId(rpcURL)
+	if err != nil {
+		log.Fatal("error getting the chainId: ", err)
+	}
+
 	// Generate the configuration data
 	configData := fmt.Sprintf(`{
 		"numDeployConfirmations": 1,
@@ -127,7 +175,7 @@ func main() {
 
 		"l1StartingBlockTag": "%s",
 
-		"l1ChainID": 5,
+		"l1ChainID": %d,
 		"l2ChainID": 42069,
 		"l2BlockTime": 2,
 
@@ -174,7 +222,7 @@ func main() {
 
 		"eip1559Denominator": 50,
 		"eip1559Elasticity": 10
-	}`, addresses.Admin, addresses.Admin, addresses.Admin, blockInfo.Hash, addresses.Sequencer, addresses.Batcher, blockInfo.Timestamp, addresses.Proposer, addresses.Admin, addresses.Admin, addresses.Admin, addresses.Admin, addresses.Admin, addresses.Admin)
+	}`, addresses.Admin, addresses.Admin, addresses.Admin, blockInfo.Hash, chainId, addresses.Sequencer, addresses.Batcher, blockInfo.Timestamp, addresses.Proposer, addresses.Admin, addresses.Admin, addresses.Admin, addresses.Admin, addresses.Admin, addresses.Admin)
 
 	// Save the configuration data to a file
 	outputFilePath := "deploy-config/getting-started.json"
