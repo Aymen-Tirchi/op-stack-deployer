@@ -13,7 +13,7 @@ import (
 const (
 	opNodeDir        = "cmd/main.go"
 	deployConfigDir  = "../packages/contracts-bedrock/deploy-config/getting-started.json"
-	gettingStartedDir = "../packages/contracts-bedrock/deployments/goerli/"
+	gettingStartedDir = "../packages/contracts-bedrock/deployments/getting-started/"
 )
 
 func runCommandWithOutput(cmd *exec.Cmd) error {

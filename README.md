@@ -138,7 +138,7 @@ Replace `<ETH_RPC_URL>` with the URL for the L1 (such as Goerli) you're using.
 ```bash
 export L2OO_ADDR=<L2OutputOracleProxy address>
 ```
-Replace `<L2OutputOracleProxy address>` with the actual address of `L2OutputOracleProxy` found in `optimism/packages/contracts-bedrock/deployments/goerli/L2OutputOracleProxy.json`.
+Replace `<L2OutputOracleProxy address>` with the actual address of `L2OutputOracleProxy` found in `optimism/packages/contracts-bedrock/deployments/getting-started/L2OutputOracleProxy.json`.
 
 and then run this command: 
 ```bash
