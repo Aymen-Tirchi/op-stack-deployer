@@ -17,6 +17,7 @@
     Controller                     string `json:"controller"`
     L1StartingBlockTag             string `json:"l1StartingBlockTag"`
     L1ChainID                      int    `json:"l1ChainID"`
+    L1BlockTime                    int    `json:"l1BlockTime"`
     L2ChainID                      int    `json:"l2ChainID"`
     L2BlockTime                    int    `json:"l2BlockTime"`
     MaxSequencerDrift              int    `json:"maxSequencerDrift"`
@@ -68,7 +69,7 @@
       return err
     }
     config.SystemConfigStartBlock = 0 
-
+    config.L1ChainID = 5
     // Update the l1StartingBlockTag field with the desired value
     config.L1StartingBlockTag = "0x6ffc1bf3754c01f6bb9fe057c1578b87a8571ce2e9be5ca14bace6eccfd336c7"
 
