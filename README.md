@@ -19,21 +19,21 @@ And then follow these steps:
 1. Build the Optimism Monorepo
 
 ```bash
-go run build_optimism/build_optimism.go
+go run cmd/1_build_optimism/main.go
 ```
 This script will automatically clone the Optimism Monorepo, install the required modules, build the necessary packages, and generate the Optimism Monorepo and packages successfully.
 
 2. Build op-geth
 
 ```bash
-go run build_op-geth/build_op-geth.go
+go run cmd/2_build_op-geth/main.go
 ```
 This script will automatically clone the op-geth repo, build the necessary packages, and generate the op-geth repo and packages successfully.
 
 3. Generate some keys
 
 ```bash
-go run generate_keys/generate_keys.go
+go run cmd/3_generate_keys/main.go
 ```
 This script will generate the keys of each role and store them in a text file named `keys.txt` in the root directory of the project. The `keys.txt` file will contain the addresses and private keys for the `Admin`, `Proposer`, `Batcher`, and `Sequencer` accounts.
 
@@ -42,7 +42,7 @@ This script will generate the keys of each role and store them in a text file na
 - Before you run the script go to this path `optimism/packages/contracts-bedrock` you will find `.envrc.example` remove `.example` part from it and then enter the `.envrc` file, set the `ETH_RPC_URL` that you are using, and replace the `PRIVATE_KEY` with the actual private key of the `Admin` which is in the `keys.txt`, and the `DEPLOYMENT_CONTEXT` stays the same which is `getting-started`.
 
 ```bash
-go run configure_network/configure_network.go
+go run cmd/4_configure_network/main.go
 ```
 - This script will automatically configure your network based on the generated keys and the provided L1 node RPC URL. It will configure `getting-started.json` in the `optimism/packages/contracts-bedrock/deploy-config` directory, which contains all the required parameters for your network setup.
 
@@ -51,26 +51,26 @@ go run configure_network/configure_network.go
 
 - Now you can run the script :
 ```bash
-go run deploy_L1_contracts/deploy_L1_contracts.go
+go run cmd/5_deploy_L1_contracts/main.go
 ```
 The script will start deploying all the L1 smart contracts. During the deployment process, you may see various transaction logs and updates. Once the deployment is successful, you will receive a confirmation message.
 
 6. Generate the L2 config files
 ```bash
-sudo go run L2_config/L2_config.go
+go run cmd/6_L2_config/main.go
 ```
 This script will automatically create the necessary L2 configuration files `genesis.json`, `rollup.json`, and `jwt.txt`. These files are crucial for the configuration and secure communication between the op-node and op-geth.
 
 7. Initialize op-geth
 ```bash
-go run Initialize_op-geth/initialize_op-geth.go
+go run cmd/7_Initialize_op-geth/main.go
 ```
 This script will create a data directory and initialize the `op-geth` with the `genesis.json` we generated in the previous script.
 
 8. Run the node software
 - Run op-geth 
 ```bash
-go run run_op-geth/run_op-geth.go
+go run cmd/8_run_op-geth/main.go
 ```
 This script will run the op-geth node.
 - Run op-node
@@ -93,7 +93,7 @@ Replace `<L1 server>` with The type of L1 server to which you connecting (e.g., 
 
 and then run this command: 
 ```bash
-go run run_op-node/run_op-node.go
+go run cmd/9_run_op-node/main.go 
 ```
 This script will run the op-node.
 
@@ -113,7 +113,7 @@ And make sure you fund your batcher address with at least 1 Goerli test ETH, to 
 
 and then run this command: 
 ```bash
-go run run_op-batcher/run_op-batcher.go
+go run cmd/10_run_op-batcher/main.go 
 ```
 This script will run the op-batcher.
 
@@ -142,7 +142,7 @@ Replace `<L2OutputOracleProxy address>` with the actual address of `L2OutputOrac
 
 and then run this command: 
 ```bash
-go run run_op-proposer/run_op-proposer.go
+go run cmd/11_run_op-proposer/main.go 
 ```
 This script will run the op-proposer.
 
@@ -152,7 +152,7 @@ check out this [Rollup Operations](https://stack.optimism.io/docs/build/operatio
 
 To get the address of your Rollup run the following command
 ```bash
-go run get_rollup_address/get_rollup_address.go
+go run cmd/12_get_rollup_address/main.go 
 ```
 and now you can fund your rollup address with some ETH. It may take up to 5 minutes for that ETH to appear in your wallet on L2.
 
