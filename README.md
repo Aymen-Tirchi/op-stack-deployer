@@ -75,76 +75,33 @@ go run cmd/8_run_op-geth/main.go
 This script will run the op-geth node.
 - Run op-node
 
-#### Note: when you copy any privateKey make sure you copy it without `0x`
-
-Before running op-node, ensure you've exported the following environment variables:
-```bash
-export SEQ_KEY=<Sequencer PrivateKey>
-```
-Replace `<Sequencer PrivateKey>` with the actual Sequencer Private key from `keys.txt`.
-```bash
-export L1_RPC=<ETH_RPC_URL>
-```
-Replace `<ETH_RPC_URL>` with the URL for the L1 (such as Goerli) you're using.
-```bash
-export RPC_KIND=<L1 server>
-```
-Replace `<L1 server>` with The type of L1 server to which you connecting (e.g., `alchemy`, `quicknode`).
-
-and then run this command: 
 ```bash
 go run cmd/9_run_op-node/main.go 
 ```
-This script will run the op-node.
+This script will set up system variables and run `op-node`.
 
 - Run op-batcher
 
-Before running op-batcher, ensure you've exported the following environment variables:
-```bash
-export BATCHER_KEY=<Batcher PrivateKey>
-```
-Replace `<Batcher PrivateKey>` with the actual Batcher Private key from `keys.txt`.
-```bash
-export L1_RPC=<ETH_RPC_URL>
-```
-Replace `<ETH_RPC_URL>` with the URL for the L1 (such as Goerli) you're using.
-
-And make sure you fund your batcher address with at least 1 Goerli test ETH, to ensure that it can continue operating without running out of ETH for gas.
+before you run `op-batcher` make sure you fund your batcher address with at least 1 Goerli test ETH, to ensure that it can continue operating without running out of ETH for gas.
 
 and then run this command: 
 ```bash
 go run cmd/10_run_op-batcher/main.go 
 ```
-This script will run the op-batcher.
+This script will set up system variables and run `op-batcher`.
 
 might have warning messages similar to: 
 ```bash
 WARN [03-21|14:13:55.248] Error calculating L2 block range         err="failed to get sync status: Post \"http://localhost:8547\": context deadline exceeded"
-WARN [03-21|14:13:57.328] Error calculating L2 block range         err="failed to get sync status: Post \"http://localhost:8547\": context deadline exceeded"
 ```
 This means that `op-node` is not yet synchronized up to the present time. Just wait until it is.
 
 - Run op-proposer
 
-Before running op-proposer, ensure you've exported the following environment variables:
-```bash
-export PROPOSER_KEY=<Proposer PrivateKey>
-```
-Replace `<Proposer PrivateKey>` with the actual Proposer Private key from `keys.txt`.
-```bash
-export L1_RPC=<ETH_RPC_URL>
-```
-Replace `<ETH_RPC_URL>` with the URL for the L1 (such as Goerli) you're using.
-```bash
-export L2OO_ADDR=<L2OutputOracleProxy address>
-```
-Replace `<L2OutputOracleProxy address>` with the actual address of `L2OutputOracleProxy` found in `optimism/packages/contracts-bedrock/deployments/getting-started/L2OutputOracleProxy.json`.
-
-and then run this command: 
 ```bash
 go run cmd/11_run_op-proposer/main.go 
 ```
-This script will run the op-proposer.
+This script will set up system variables and run the `op-proposer`.
 
 check out this [Rollup Operations](https://stack.optimism.io/docs/build/operations/#) 
 
