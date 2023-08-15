@@ -132,15 +132,6 @@ func main() {
 	log.Println("Entering the contracts-bedrock package...")
 	os.Chdir("optimism/packages/contracts-bedrock")
 
-  if _, err:= os.Stat(".envrc"); os.IsNotExist(err) {
-    log.Println("Copying the environment file...")
-    cpCmd := exec.Command("cp", ".envrc.example", ".envrc")
-    err := cpCmd.Run()
-    if err != nil {
-      log.Fatal("Error copying the environment file: ", err)
-    }
-  }
-
 	if err := godotenv.Load(".envrc"); err != nil {
 		log.Fatal("Error loading environment variables from .envrc: ", err)
 	}

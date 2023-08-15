@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"log"
 	"os"
@@ -28,7 +29,6 @@ func generateKey(role string) (address, privateKey string, err error) {
 
 func main() {
 	log.Println("entering the contracts-bedrock directory... ")
-	os.Chdir("/optimism/packages/contracts-bedrock")
 
 	if _, err := os.Stat("keys.txt"); os.IsNotExist(err) {
 		log.Println("generating keys... ")
@@ -50,6 +50,22 @@ func main() {
 		}
 		fmt.Printf("keys have been generated and saved to %s\n", outputFilePath)
 	} else {
-		fmt.Println("keys.txt already exists")
+		log.Println("keys.txt already exists")
 	}
+
+	os.Chdir("optimism/packages/contracts-bedrock")
+	if _, err := os.Stat(".envrc"); os.IsNotExist(err) {
+        log.Println("Copying the environment file...")
+        var cpOutput bytes.Buffer
+        cpCmd := exec.Command("cp", ".envrc.example", ".envrc")
+        cpCmd.Stderr = &cpOutput // Capture the standard error output
+
+        err := cpCmd.Run()
+        if err != nil {
+            log.Fatalf("Error copying the environment file: %s", cpOutput.String()) // Print captured error output
+        }
+    } else {
+		log.Println(".envrc already exists")
+	}
+
 }
