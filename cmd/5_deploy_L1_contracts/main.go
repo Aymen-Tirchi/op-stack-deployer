@@ -69,7 +69,6 @@ func updateGoerliConfig(configFilePath string) error {
 	return err
   }
   config.SystemConfigStartBlock = 0 
-  config.L1ChainID = 5
   config.L1BlockTime = 12
   // Update the l1StartingBlockTag field with the desired value
   config.L1StartingBlockTag = "0x6ffc1bf3754c01f6bb9fe057c1578b87a8571ce2e9be5ca14bace6eccfd336c7"

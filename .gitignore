@@ -22,5 +22,5 @@ go.work
 
 op-geth
 optimism
-keys.txt
+keys*.txt
 optimism-tutorial
