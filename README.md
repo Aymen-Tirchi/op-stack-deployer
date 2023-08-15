@@ -57,7 +57,7 @@ The script will start deploying all the L1 smart contracts. During the deploymen
 
 6. Generate the L2 config files
 ```bash
-go run cmd/6_L2_config/main.go
+sudo go run cmd/6_L2_config/main.go
 ```
 This script will automatically create the necessary L2 configuration files `genesis.json`, `rollup.json`, and `jwt.txt`. These files are crucial for the configuration and secure communication between the op-node and op-geth.
 
