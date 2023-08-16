@@ -111,32 +111,32 @@ func main() {
   os.Chdir("optimism/packages/contracts-bedrock")
 
   if _, err := os.Stat("deployments/getting-started"); os.IsNotExist(err) {
-	log.Println("Creating a getting-started deployment directory...")
-	mkdirCmd := exec.Command("mkdir", "deployments/getting-started")
-	err := mkdirCmd.Run()
-	if err != nil {
-	  log.Fatal("Error creating the deployments/getting-started directory:", err)
-	}
+    log.Println("Creating a getting-started deployment directory...")
+    mkdirCmd := exec.Command("mkdir", "deployments/getting-started")
+    err := mkdirCmd.Run()
+    if err != nil {
+      log.Fatal("Error creating the deployments/getting-started directory:", err)
+    }
   } else {
-	log.Println("The deployments/getting-started directory already exists")
+    log.Println("The deployments/getting-started directory already exists")
   }
 
   configFilePath := "deploy-config/getting-started.json"
   err := updateGoerliConfig(configFilePath)
   if err != nil {
-	  log.Fatal("Error updating getting-started.json: ", err)
+    log.Fatal("Error updating getting-started.json: ", err)
   }
 
   configFilePath = "deploy-config/goerli.json"
   err = updateGoerliConfig(configFilePath)
   if err != nil {
-	log.Fatal("Error updating goerli.json: ", err)
+    log.Fatal("Error updating goerli.json: ", err)
   }
 
   fmt.Println("goerli.json updated successfully!")
 
   if err := godotenv.Load(".envrc"); err != nil {
-	log.Fatal("Error loading environment variables from .envrc: ", err)
+    log.Fatal("Error loading environment variables from .envrc: ", err)
   }
 
   rpcURL := os.Getenv("ETH_RPC_URL")
@@ -147,13 +147,13 @@ func main() {
   deployCmd1 := exec.Command("forge", "script", "scripts/Deploy.s.sol:Deploy", "--private-key="+privateKeyAdmin, "--broadcast", "--rpc-url="+rpcURL)
   err = runCommandWithOutput(deployCmd1)
   if err != nil {
-	log.Fatal("Error deploying the L1 contracts: ", err)
+    log.Println("Error deploying the L1 contracts with deployCmd1:", err)
   }
 
   deployCmd2 := exec.Command("forge", "script", "scripts/Deploy.s.sol:Deploy", "--sig", "sync()", "--private-key="+privateKeyAdmin, "--broadcast", "--rpc-url="+rpcURL)
   err = runCommandWithOutput(deployCmd2)
   if err != nil {
-	log.Fatal("Error deploying the L1 contracts: ", err)
+    log.Println("Error deploying the L1 contracts with deployCmd2:", err)
   }
 
   log.Println("L1 smart contracts deployed successfully!")
