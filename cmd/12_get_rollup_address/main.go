@@ -35,7 +35,7 @@ func main () {
 	}
 
 	log.Println("getting the rollup address... ")
-	getAddress := exec.Command("bash", "-c", "cat deployments/goerli/L1StandardBridgeProxy.json | jq -r .address")
+	getAddress := exec.Command("bash", "-c", "cat deployments/getting-started/L1StandardBridgeProxy.json | jq -r .address")
 	err = runCommandWithOutput(getAddress)
 	if err != nil {
 		log.Fatal("error getting the rollup address: ", err)
