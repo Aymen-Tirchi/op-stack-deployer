@@ -1,6 +1,6 @@
 # op-stack-deployer
 
-OP Stack Deployer is a tool that simplifies setting up and deploying an OP Stack chain on the Ethereum Goerli testnet. This guide will walk you through the steps required to spin up your OP Stack chain and perform tests or customize it for your specific needs.
+OP Stack Deployer is a tool that simplifies setting up and deploying an OP Stack chain on the Ethereum Sepolia testnet. This guide will walk you through the steps required to spin up your OP Stack chain and perform tests or customize it for your specific needs.
 
 This project is based on the [OP Stack Getting Started doc](https://stack.optimism.io/docs/build/getting-started/#).
 
@@ -47,7 +47,7 @@ go run cmd/4_configure_network/main.go
 - This script will automatically configure your network based on the generated keys and the provided L1 node RPC URL. It will configure `getting-started.json` in the `optimism/packages/contracts-bedrock/deploy-config` directory, which contains all the required parameters for your network setup.
 
 5. Deploy the L1 contracts
-- Before running the `deploy_L1_contracts.go` script, ensure that you have funded your Admin address with some Goerli test ETH (at least 0.5 ETH). Having sufficient test ETH will cover the gas costs and ensure the successful deployment of the L1 contracts.
+- Before running the `deploy_L1_contracts.go` script, ensure that you have funded your Admin address with some Sepolia test ETH (at least 0.5 ETH). Having sufficient test ETH will cover the gas costs and ensure the successful deployment of the L1 contracts.
 
 - Now you can run the script :
 ```bash
@@ -82,7 +82,7 @@ This script will set up system variables and run `op-node`.
 
 - Run op-batcher
 
-before you run `op-batcher` make sure you fund your batcher address with at least 1 Goerli test ETH, to ensure that it can continue operating without running out of ETH for gas.
+before you run `op-batcher` make sure you fund your batcher address with at least 1 Sepolia test ETH, to ensure that it can continue operating without running out of ETH for gas.
 
 and then run this command: 
 ```bash

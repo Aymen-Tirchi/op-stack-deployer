@@ -10,7 +10,7 @@ import (
   "github.com/joho/godotenv"
 )
 
-type GoerliConfig struct {
+type sepoliaConfig struct {
   NumDeployConfirmations         int    `json:"numDeployConfirmations"`
   FinalSystemOwner               string `json:"finalSystemOwner"`
   PortalGuardian                 string `json:"portalGuardian"`
@@ -56,14 +56,14 @@ type GoerliConfig struct {
   SystemConfigStartBlock         int `json:"systemConfigStartBlock"`
 }
 
-func updateGoerliConfig(configFilePath string) error {
+func updatesepoliaConfig(configFilePath string) error {
   // Read the existing JSON data from the file
   data, err := os.ReadFile(configFilePath)
   if err != nil {
 	return err
   }
   // Unmarshal the JSON data into a struct
-  var config GoerliConfig
+  var config sepoliaConfig
   err = json.Unmarshal(data, &config)
   if err != nil {
 	return err
@@ -122,18 +122,18 @@ func main() {
   }
 
   configFilePath := "deploy-config/getting-started.json"
-  err := updateGoerliConfig(configFilePath)
+  err := updatesepoliaConfig(configFilePath)
   if err != nil {
     log.Fatal("Error updating getting-started.json: ", err)
   }
 
-  configFilePath = "deploy-config/goerli.json"
-  err = updateGoerliConfig(configFilePath)
+  configFilePath = "deploy-config/sepolia.json"
+  err = updatesepoliaConfig(configFilePath)
   if err != nil {
-    log.Fatal("Error updating goerli.json: ", err)
+    log.Fatal("Error updating sepolia.json: ", err)
   }
 
-  fmt.Println("goerli.json updated successfully!")
+  fmt.Println("sepolia.json updated successfully!")
 
   if err := godotenv.Load(".envrc"); err != nil {
     log.Fatal("Error loading environment variables from .envrc: ", err)
