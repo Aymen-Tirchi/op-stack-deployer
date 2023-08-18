@@ -82,7 +82,7 @@ This script will set up system variables and run `op-node`.
 
 - Run op-batcher
 
-before you run `op-batcher` make sure you fund your batcher address with at least 1 Sepolia test ETH, to ensure that it can continue operating without running out of ETH for gas.
+before you run `op-batcher` make sure you fund your batcher address with at least 0.5 Sepolia test ETH, to ensure that it can continue operating without running out of ETH for gas.
 
 and then run this command: 
 ```bash
@@ -97,6 +97,8 @@ WARN [03-21|14:13:55.248] Error calculating L2 block range         err="failed t
 This means that `op-node` is not yet synchronized up to the present time. Just wait until it is.
 
 - Run op-proposer
+
+before you run `op-proposer` make sure you fund your proposer address with at least 0.5 Sepolia test ETH, to ensure that it can continue operating without running out of ETH for gas.
 
 ```bash
 go run cmd/11_run_op-proposer/main.go 
