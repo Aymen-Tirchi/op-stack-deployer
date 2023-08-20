@@ -68,6 +68,8 @@ go run cmd/7_Initialize_op-geth/main.go
 This script will create a data directory and initialize the `op-geth` with the `genesis.json` we generated in the previous script.
 
 8. Run the node software
+
+before running anything make sure you fund your `batcher` and `proposer` addresses with at least 0.5 Sepolia test ETH, to ensure that it can continue operating without running out of ETH for gas.
 - Run op-geth 
 ```bash
 go run cmd/8_run_op-geth/main.go
@@ -81,10 +83,7 @@ go run cmd/9_run_op-node/main.go
 This script will set up system variables and run `op-node`.
 
 - Run op-batcher
-
-before you run `op-batcher` make sure you fund your batcher address with at least 0.5 Sepolia test ETH, to ensure that it can continue operating without running out of ETH for gas.
-
-and then run this command: 
+ 
 ```bash
 go run cmd/10_run_op-batcher/main.go 
 ```
@@ -97,8 +96,6 @@ WARN [03-21|14:13:55.248] Error calculating L2 block range         err="failed t
 This means that `op-node` is not yet synchronized up to the present time. Just wait until it is.
 
 - Run op-proposer
-
-before you run `op-proposer` make sure you fund your proposer address with at least 0.5 Sepolia test ETH, to ensure that it can continue operating without running out of ETH for gas.
 
 ```bash
 go run cmd/11_run_op-proposer/main.go 
