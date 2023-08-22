@@ -1,30 +1,21 @@
 package main
 
 import (
-	"io"
+	"fmt"
 	"log"
 	"os"
 	"os/exec"
 )
 
 func runCommandWithOutput(cmd *exec.Cmd) error {
-	stdoutPipe, err := cmd.StdoutPipe()
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+  
+	err := cmd.Run()
 	if err != nil {
-		return err
+		log.Fatalf("Command execution error: %v\n", err)
 	}
-
-	stderrPipe, err := cmd.StderrPipe()
-	if err != nil {
-		return err
-	}
-
-	multiReader := io.MultiReader(stdoutPipe, stderrPipe)
-
-	go func() {
-		io.Copy(os.Stdout, multiReader)
-	}()
-
-	return cmd.Run()
+	return nil
 }
 
 func main() {
@@ -64,5 +55,5 @@ func main() {
 		log.Fatal("Error building the Optimism Monorepo:", err)
 	}
 
-	log.Println("Optimism Monorepo and packages built successfully!")
+	fmt.Println("Optimism Monorepo and packages built successfully!")
 }

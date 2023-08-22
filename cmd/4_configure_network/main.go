@@ -129,7 +129,6 @@ func getChainId(rpcURL string) (int, error) {
 
 func main() {
 
-	log.Println("Entering the contracts-bedrock package...")
 	os.Chdir("optimism/packages/contracts-bedrock")
 
 	if err := godotenv.Load(".envrc"); err != nil {
@@ -155,6 +154,8 @@ func main() {
 	if err != nil {
 		log.Fatal("error getting the chainId: ", err)
 	}
+
+	log.Println("updating getting-started.json file... ")
 
 	// Generate the configuration data
 	configData := fmt.Sprintf(`{
@@ -222,5 +223,5 @@ func main() {
 		log.Fatal("Error writing configuration data to file: ", err)
 	}
 
-	log.Printf("Configuration file has been updated and saved to %s\n", outputFilePath)
+	fmt.Printf("Configuration file has been updated and saved to %s\n", outputFilePath)
 }
