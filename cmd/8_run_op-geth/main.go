@@ -50,5 +50,4 @@ func main() {
 
 	runCommand(cmdStr)
 
-	log.Println("op-geth running successfully!")
 }

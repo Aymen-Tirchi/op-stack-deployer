@@ -101,5 +101,4 @@ func main() {
 	--l1.rpckind=$RPC_KIND`
 
 	runCommand(runCmd)
-	log.Println("op-node running successfully! ")
 }

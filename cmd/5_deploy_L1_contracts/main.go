@@ -1,20 +1,18 @@
 package main
 
 import (
-  "encoding/json"
-  "fmt"
-  "io"
-  "log"
-  "os"
-  "os/exec"
-  "github.com/joho/godotenv"
+	"encoding/json"
+	"fmt"
+	"log"
+	"os"
+	"os/exec"
+
+	"github.com/joho/godotenv"
 )
 
 type sepoliaConfig struct {
-  NumDeployConfirmations         int    `json:"numDeployConfirmations"`
   FinalSystemOwner               string `json:"finalSystemOwner"`
   PortalGuardian                 string `json:"portalGuardian"`
-  Controller                     string `json:"controller"`
   L1StartingBlockTag             string `json:"l1StartingBlockTag"`
   L1ChainID                      int    `json:"l1ChainID"`
   L1BlockTime                    int    `json:"l1BlockTime"`
@@ -87,23 +85,14 @@ func updatesepoliaConfig(configFilePath string) error {
 }
 
 func runCommandWithOutput(cmd *exec.Cmd) error {
-  stdoutPipe, err := cmd.StdoutPipe()
+  cmd.Stdout = os.Stdout
+  cmd.Stderr = os.Stderr
+
+  err := cmd.Run()
   if err != nil {
-	return err
+      log.Fatalf("Command execution error: %v\n", err)
   }
-
-  stderrPipe, err := cmd.StderrPipe()
-  if err != nil {
-	return err
-  }
-
-  multiReader := io.MultiReader(stdoutPipe, stderrPipe)
-
-  go func() {
-	io.Copy(os.Stdout, multiReader)
-  }()
-
-  return cmd.Run()
+  return nil
 }
 
 func main() {
@@ -133,7 +122,7 @@ func main() {
     log.Fatal("Error updating sepolia.json: ", err)
   }
 
-  fmt.Println("sepolia.json updated successfully!")
+  log.Println("sepolia.json updated successfully!")
 
   if err := godotenv.Load(".envrc"); err != nil {
     log.Fatal("Error loading environment variables from .envrc: ", err)
@@ -156,5 +145,5 @@ func main() {
     log.Println("Error deploying the L1 contracts with deployCmd2:", err)
   }
 
-  log.Println("L1 smart contracts deployed successfully!")
+  fmt.Println("L1 smart contracts deployed successfully!")
 }

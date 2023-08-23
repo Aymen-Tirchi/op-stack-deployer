@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bytes"
+	"fmt"
 	"log"
 	"os"
 	"os/exec"
@@ -12,13 +12,12 @@ const (
 )
 
 func runCommandWithOutput(cmd *exec.Cmd) error {
-	var outputBuf bytes.Buffer
-	cmd.Stdout = &outputBuf
-	cmd.Stderr = &outputBuf
-
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+  
 	err := cmd.Run()
 	if err != nil {
-		log.Fatalf("Command execution error: %v\nOutput:\n%s\n", err, outputBuf.String())
+		log.Fatalf("Command execution error: %v\n", err)
 	}
 	return nil
 }
@@ -49,5 +48,5 @@ func main() {
 		log.Fatal("Error initializing op-geth: ", err)
 	}
 
-	log.Println("op-geth initialized successfully!")
+	fmt.Println("op-geth initialized successfully!")
 }

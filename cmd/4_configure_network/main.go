@@ -159,11 +159,9 @@ func main() {
 
 	// Generate the configuration data
 	configData := fmt.Sprintf(`{
-		"numDeployConfirmations": 1,
 
 		"finalSystemOwner": "%s",
 		"portalGuardian": "%s",
-		"controller": "%s",
 
 		"l1StartingBlockTag": "%s",
 
@@ -214,7 +212,7 @@ func main() {
 
 		"eip1559Denominator": 50,
 		"eip1559Elasticity": 10
-	}`, addresses.Admin, addresses.Admin, addresses.Admin, blockInfo.Hash, chainId, addresses.Sequencer, addresses.Batcher, blockInfo.Timestamp, addresses.Proposer, addresses.Admin, addresses.Admin, addresses.Admin, addresses.Admin, addresses.Admin, addresses.Admin)
+	}`, addresses.Admin, addresses.Admin, blockInfo.Hash, chainId, addresses.Sequencer, addresses.Batcher, blockInfo.Timestamp, addresses.Proposer, addresses.Admin, addresses.Admin, addresses.Admin, addresses.Admin, addresses.Admin, addresses.Admin)
 
 	// Save the configuration data to a file
 	outputFilePath := "deploy-config/getting-started.json"

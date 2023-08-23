@@ -47,7 +47,7 @@ go run cmd/4_configure_network/main.go
 - This script will automatically configure your network based on the generated keys and the provided L1 node RPC URL. It will configure `getting-started.json` in the `optimism/packages/contracts-bedrock/deploy-config` directory, which contains all the required parameters for your network setup.
 
 5. Deploy the L1 contracts
-- Before running the `deploy_L1_contracts.go` script, ensure that you have funded your Admin address with some Sepolia test ETH (at least 0.5 ETH). Having sufficient test ETH will cover the gas costs and ensure the successful deployment of the L1 contracts.
+- Before running the `deploy_L1_contracts.go` script, ensure that you have funded your `Admin` address with some Sepolia test ETH (at least 0.5 ETH). Having sufficient test ETH will cover the gas costs and ensure the successful deployment of the L1 contracts.
 
 - Now you can run the script :
 ```bash

@@ -119,5 +119,5 @@ func main() {
 		--l1-eth-rpc=$L1_RPC`
 
 	runCommand(runCmd)
-	log.Println("op-proposer running successfully!")
+
 }

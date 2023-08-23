@@ -99,6 +99,4 @@ func main() {
 
 	runCommand(runCmd)
 
-	log.Println("op-batcher running successfully! ")
-
 }
