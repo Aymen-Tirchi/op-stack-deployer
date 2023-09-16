@@ -1,0 +1,11 @@
+FROM golang:alpine
+
+WORKDIR /app
+
+COPY . .
+
+RUN apk update && apk add --no-cache git nodejs npm make jq direnv
+
+RUN chmod +x /app/entrypoint-build-optimism.sh
+
+CMD ["/app/entrypoint-build-optimism.sh"]

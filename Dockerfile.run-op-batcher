@@ -1,0 +1,7 @@
+FROM golang:alpine
+
+WORKDIR /app
+
+COPY . .
+
+CMD ["go run cmd/10_run_op-batcher/main.go"]

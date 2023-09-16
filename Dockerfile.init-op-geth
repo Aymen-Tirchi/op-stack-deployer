@@ -1,0 +1,9 @@
+FROM golang:alpine
+
+WORKDIR /app
+
+COPY . .
+
+RUN chmod +x /app/entrypoint-init-op-geth.sh
+
+CMD ["/app/entrypoint-init-op-geth.sh"]

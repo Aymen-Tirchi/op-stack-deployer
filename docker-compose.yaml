@@ -1,0 +1,127 @@
+version: '3'
+
+services:
+
+  build-optimism:
+    build: 
+      context: .
+      dockerfile: Dockerfile.build-optimism
+    volumes: 
+      - ./op-stack-deployer:/app
+    working_dir: /app
+    command: go run cmd/1_build_optimism/main.go
+    networks: 
+      - op-network
+    
+  build-op-geth:
+    build:
+      context: .
+      dockerfile: Dockerfile.build-op-geth
+    volumes:
+        - ./op-stack-deployer:/app
+    working_dir: /app
+    command: go run cmd/2_build_op-geth/main.go
+    networks:
+        - op-network
+  
+  generate-keys:
+    build:
+      context: .
+      dockerfile: Dockerfile.generate-keys
+    volumes:
+      - ./op-stack-deployer:/app
+    working_dir: /app
+    command: go run cmd/3_generate_keys/main.go
+    networks: 
+      - op-network
+  
+  deploy-l1-contracts:
+    build:
+      context: .
+      dockerfile: Dockerfile.deploy-l1-contracts
+    volumes:
+      - ./op-stack-deployer:/app
+    working_dir: /app
+    command: go run cmd/5_deploy_L1_contracts/main.go
+    networks: 
+      - op-network
+
+  l2-config:
+    build:
+      context: .
+      dockerfile: Dockerfile.l2-config
+    volumes:
+      - ./op-stack-deployer:/app
+    working_dir: /app
+    command: sudo go run cmd/6_L2_config/main.go
+    networks: 
+      - op-network
+
+  init-op-geth:
+    build:
+      context: .
+      dockerfile: Dockerfile.init-op-geth
+    volumes:
+      - ./op-stack-deployer:/app
+    working_dir: /app
+    command: go run cmd/7_Initialize_op-geth/main.go
+    networks: 
+      - op-network
+
+  run-op-geth:
+    build:
+      context: .
+      dockerfile: Dockerfile.run-op-geth
+    volumes:
+      - ./op-stack-deployer:/app
+    working_dir: /app
+    command: go run cmd/8_run_op-geth/main.go
+    networks: 
+      - op-network
+
+  run-op-node:
+    build:
+      context: .
+      dockerfile: Dockerfile.run-op-node
+    volumes:
+      - ./op-stack-deployer:/app
+    working_dir: /app
+    command: go run cmd/9_run_op-node/main.go 
+    networks: 
+      - op-network
+
+  run-op-batcher:
+    build:
+      context: .
+      dockerfile: Dockerfile.run-op-batcher
+    volumes:
+      - ./op-stack-deployer:/app
+    working_dir: /app
+    command: go run cmd/10_run_op-batcher/main.go 
+    networks: 
+      - op-network
+
+  run_op-proposer:
+    build:
+      context: .
+      dockerfile: Dockerfile.run-op-proposer
+    volumes:
+      - ./op-stack-deployer:/app
+    working_dir: /app
+    command: go run cmd/11_run_op-proposer/main.go
+    networks: 
+      - op-network
+
+  get-rollup-address:
+    build:
+      context: .
+      dockerfile: Dockerfile.get-rollup-address
+    volumes:
+      - ./op-stack-deployer:/app
+    working_dir: /app
+    command: go run cmd/12_get_rollup_address/main.go
+    networks: 
+      - op-network
+
+networks:
+  op-network:

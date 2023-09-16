@@ -1,0 +1,7 @@
+FROM golang:alpine
+
+WORKDIR /app
+
+COPY  . . 
+
+CMD ["go run cmd/8_run_op-geth/main.go"]
