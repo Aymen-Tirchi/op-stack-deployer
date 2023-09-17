@@ -15,4 +15,6 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Docker Compose
-        run: docker-compose up --build -d
+        run: |
+          sudo docker-compose up --build -d
+        working-directory: .
