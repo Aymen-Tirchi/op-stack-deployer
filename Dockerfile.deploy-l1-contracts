@@ -1,9 +1,0 @@
-FROM golang:alpine
-
-WORKDIR /app
-
-COPY . .
-
-RUN chmod +x /app/entrypoint-build-op-geth.sh
-
-CMD ["/app/entrypoint-build-op-geth.sh"]

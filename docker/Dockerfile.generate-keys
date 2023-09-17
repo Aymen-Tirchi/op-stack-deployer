@@ -2,7 +2,8 @@ FROM golang:alpine
 
 WORKDIR /app
 
-COPY . .
+COPY Dockerfile.generate-keys /app/
+COPY scripts/entrypoint-generate-keys.sh /app/
 
 RUN chmod +x /app/entrypoint-generate-keys.sh
 

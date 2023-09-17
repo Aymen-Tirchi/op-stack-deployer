@@ -1,0 +1,10 @@
+FROM golang:alpine
+
+WORKDIR /app
+
+COPY Dockerfile.deploy-l1-contracts /app/
+COPY scripts/entrypoint-deploy-l1-contracts.sh /app/
+
+RUN chmod +x /app/entrypoint-deploy-l1-contracts.sh
+
+CMD ["/app/entrypoint-deploy-l1-contracts.sh"]

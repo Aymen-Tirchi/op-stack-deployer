@@ -2,7 +2,8 @@ FROM golang:alpine
 
 WORKDIR /app
 
-COPY . .
+COPY Dockerfile.init-op-geth /app/
+COPY scripts/entrypoint-init-op-geth.sh /app/
 
 RUN chmod +x /app/entrypoint-init-op-geth.sh
 

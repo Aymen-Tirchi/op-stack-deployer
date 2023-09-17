@@ -2,6 +2,6 @@ FROM golang:alpine
 
 WORKDIR /app
 
-COPY  . .
+COPY Dockerfile.run-op-node /app/
 
 CMD ["go run cmd/9_run_op-node/main.go"]

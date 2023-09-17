@@ -4,7 +4,7 @@ services:
 
   build-optimism:
     build: 
-      context: .
+      context: ./docker
       dockerfile: Dockerfile.build-optimism
     volumes: 
       - ./op-stack-deployer:/app
@@ -15,7 +15,7 @@ services:
     
   build-op-geth:
     build:
-      context: .
+      context: ./docker
       dockerfile: Dockerfile.build-op-geth
     volumes:
         - ./op-stack-deployer:/app
@@ -26,7 +26,7 @@ services:
   
   generate-keys:
     build:
-      context: .
+      context: ./docker
       dockerfile: Dockerfile.generate-keys
     volumes:
       - ./op-stack-deployer:/app
@@ -37,7 +37,7 @@ services:
   
   deploy-l1-contracts:
     build:
-      context: .
+      context: ./docker
       dockerfile: Dockerfile.deploy-l1-contracts
     volumes:
       - ./op-stack-deployer:/app
@@ -48,7 +48,7 @@ services:
 
   l2-config:
     build:
-      context: .
+      context: ./docker
       dockerfile: Dockerfile.l2-config
     volumes:
       - ./op-stack-deployer:/app
@@ -59,7 +59,7 @@ services:
 
   init-op-geth:
     build:
-      context: .
+      context: ./docker
       dockerfile: Dockerfile.init-op-geth
     volumes:
       - ./op-stack-deployer:/app
@@ -70,7 +70,7 @@ services:
 
   run-op-geth:
     build:
-      context: .
+      context: ./docker
       dockerfile: Dockerfile.run-op-geth
     volumes:
       - ./op-stack-deployer:/app
@@ -81,7 +81,7 @@ services:
 
   run-op-node:
     build:
-      context: .
+      context: ./docker
       dockerfile: Dockerfile.run-op-node
     volumes:
       - ./op-stack-deployer:/app
@@ -92,7 +92,7 @@ services:
 
   run-op-batcher:
     build:
-      context: .
+      context: ./docker
       dockerfile: Dockerfile.run-op-batcher
     volumes:
       - ./op-stack-deployer:/app
@@ -103,7 +103,7 @@ services:
 
   run_op-proposer:
     build:
-      context: .
+      context: ./docker
       dockerfile: Dockerfile.run-op-proposer
     volumes:
       - ./op-stack-deployer:/app
@@ -114,7 +114,7 @@ services:
 
   get-rollup-address:
     build:
-      context: .
+      context: ./docker
       dockerfile: Dockerfile.get-rollup-address
     volumes:
       - ./op-stack-deployer:/app

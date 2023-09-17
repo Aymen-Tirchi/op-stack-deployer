@@ -2,7 +2,8 @@ FROM golang:alpine
 
 WORKDIR /app
 
-COPY . .
+COPY Dockerfile.get-rollup-address /app/
+COPY scripts/entrypoint-get-rollup-address.sh /app/
 
 RUN chmod +x /app/entrypoint-get-rollup-address.sh
 

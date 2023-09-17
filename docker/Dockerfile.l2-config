@@ -2,7 +2,8 @@ FROM golang:alpine
 
 WORKDIR /app
 
-COPY . .
+COPY Dockerfile.l2-config /app/
+COPY scripts/entrypoint-l2-config.sh /app/
 
 RUN chmod +x /app/entrypoint-l2-config.sh
 

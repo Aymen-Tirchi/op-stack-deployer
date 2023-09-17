@@ -2,7 +2,12 @@ FROM golang:alpine
 
 WORKDIR /app
 
-COPY . .
+COPY Dockerfile.build-optimism /app/
+COPY scripts/entrypoint-build-optimism.sh /app/
+COPY cmd /app/
+COPY docker-compose /app/
+COPY go.mod /app/
+COPY go.sum /app/
 
 RUN apk update && apk add --no-cache git nodejs npm make jq direnv
 
