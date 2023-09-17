@@ -48,3 +48,4 @@ jobs:
         with:
           push: true
           tags: user/app:latest
+          context: ./docker
