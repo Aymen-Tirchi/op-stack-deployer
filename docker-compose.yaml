@@ -47,23 +47,47 @@ services:
     command: go run cmd/7_Initialize_op-geth/main.go
 
   run-op-geth:
-    extends:
-      service: common
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.run-op-geth
+    volumes:
+      - ./op-stack-deployer:/app
+    working_dir: /app
+    networks:
+      - op-network
     command: go run cmd/8_run_op-geth/main.go
 
   run-op-node:
-    extends:
-      service: common
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.run-op-node
+    volumes:
+      - ./op-stack-deployer:/app
+    working_dir: /app
+    networks:
+      - op-network
     command: go run cmd/9_run_op-node/main.go
 
   run-op-batcher:
-    extends:
-      service: common
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.run-op-batcher
+    volumes:
+      - ./op-stack-deployer:/app
+    working_dir: /app
+    networks:
+      - op-network
     command: go run cmd/10_run_op-batcher/main.go
 
   run-op-proposer:
-    extends:
-      service: common
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.run-op-proposer
+    volumes:
+      - ./op-stack-deployer:/app
+    working_dir: /app
+    networks:
+      - op-network
     command: go run cmd/11_run_op-proposer/main.go
 
 networks:
