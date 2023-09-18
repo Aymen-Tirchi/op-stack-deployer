@@ -3,6 +3,8 @@ FROM golang:alpine AS common
 
 WORKDIR /app
 
+RUN ls
+
 COPY Dockerfile.op-stack /app/
 COPY scripts/entrypoint-build-optimism.sh /app/
 COPY cmd /app/
