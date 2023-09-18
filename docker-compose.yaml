@@ -26,7 +26,7 @@ services:
       service: common
     command: go run cmd/3_generate_keys/main.go
   
-  Configure-network:
+  configure-network:
     extends:
       service: common
     command: go run cmd/4_configure_network/main.go
