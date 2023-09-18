@@ -1,0 +1,73 @@
+# Common stage for shared instructions
+FROM golang:alpine AS common
+
+WORKDIR /app
+
+COPY Dockerfile.op-stack /app/
+COPY scripts/entrypoint-build-optimism.sh /app/
+COPY cmd /app/
+COPY go.mod /app/
+COPY go.sum /app/
+
+RUN apk update && apk add --no-cache git nodejs npm make jq direnv
+
+# Stage 1: Build Optimism
+FROM common AS build-optimism
+
+RUN chmod +x /app/entrypoint-build-optimism.sh
+
+CMD ["/app/entrypoint-build-optimism.sh"]
+
+# Stage 2: Build op-geth
+FROM common AS build-op-geth
+
+COPY scripts/entrypoint-build-op-geth.sh /app/
+
+RUN chmod +x /app/entrypoint-build-op-geth.sh
+
+CMD ["/app/entrypoint-build-op-geth.sh"]
+
+# Stage 3: Generate Keys
+FROM common AS generate-keys
+
+COPY scripts/entrypoint-generate-keys.sh /app/
+
+RUN chmod +x /app/entrypoint-generate-keys.sh
+
+CMD ["/app/entrypoint-generate-keys.sh"]
+
+# Stage 4: Configure Network
+FROM common AS configure-network
+
+COPY scripts/entrypoint-configure-network.sh /app/
+
+RUN chmod +x /app/entrypoint-configure-network.sh
+
+CMD ["/app/entrypoint-configure-network.sh"]
+
+# Stage 5: Deploy L1 Contracts
+FROM common AS deploy-l1-contracts
+
+COPY scripts/entrypoint-deploy-l1-contracts.sh /app/
+
+RUN chmod +x /app/entrypoint-deploy-l1-contracts.sh
+
+CMD ["/app/entrypoint-deploy-l1-contracts.sh"]
+
+# Stage 6: Configure L2
+FROM common AS configure-l2
+
+COPY scripts/entrypoint-l2-config.sh /app/
+
+RUN chmod +x /app/entrypoint-l2-config.sh
+
+CMD ["/app/entrypoint-l2-config.sh"]
+
+# Stage 7: Initialize op-geth
+FROM common AS init-op-geth
+
+COPY scripts/entrypoint-init-op-geth.sh /app/
+
+RUN chmod +x /app/entrypoint-init-op-geth.sh
+
+CMD ["/app/entrypoint-init-op-geth.sh"]
