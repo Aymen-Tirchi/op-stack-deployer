@@ -39,7 +39,7 @@ services:
   l2-config:
     extends:
       service: common
-    command: sudo go run cmd/6_L2_config/main.go
+    command: go run cmd/6_L2_config/main.go
 
   init-op-geth:
     extends:

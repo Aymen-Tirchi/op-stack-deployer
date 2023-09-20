@@ -4,4 +4,4 @@ WORKDIR /app
 
 COPY Dockerfile.run-op-node /app/
 
-CMD ["go run cmd/9_run_op-node/main.go"]
+RUN ["sh", "go run cmd/9_run_op-node/main.go"]

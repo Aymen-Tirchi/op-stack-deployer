@@ -4,4 +4,4 @@ WORKDIR /app
 
 COPY Dockerfile.run-op-proposer /app/
 
-CMD ["go run cmd/11_run_op-proposer/main.go"]
+RUN ["sh", "go run cmd/11_run_op-proposer/main.go"]

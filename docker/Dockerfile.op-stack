@@ -3,6 +3,7 @@ FROM golang:alpine AS common
 
 WORKDIR /app
 
+RUN ls
 COPY docker/Dockerfile.op-stack /app/
 COPY docker/scripts/entrypoint-build-optimism.sh /app/
 COPY cmd /app/
@@ -16,7 +17,7 @@ FROM common AS build-optimism
 
 RUN chmod +x /app/entrypoint-build-optimism.sh
 
-CMD ["/app/entrypoint-build-optimism.sh"]
+RUN  ["sh", "/app/entrypoint-build-optimism.sh"]
 
 # Stage 2: Build op-geth
 FROM common AS build-op-geth
@@ -25,7 +26,7 @@ COPY docker/scripts/entrypoint-build-op-geth.sh /app/
 
 RUN chmod +x /app/entrypoint-build-op-geth.sh
 
-CMD ["/app/entrypoint-build-op-geth.sh"]
+RUN ["sh", "/app/entrypoint-build-op-geth.sh"]
 
 # Stage 3: Generate Keys
 FROM common AS generate-keys
@@ -34,7 +35,7 @@ COPY docker/scripts/entrypoint-generate-keys.sh /app/
 
 RUN chmod +x /app/entrypoint-generate-keys.sh
 
-CMD ["/app/entrypoint-generate-keys.sh"]
+RUN ["sh", "/app/entrypoint-generate-keys.sh"]
 
 # Stage 4: Configure Network
 FROM common AS configure-network
@@ -43,7 +44,7 @@ COPY docker/scripts/entrypoint-configure-network.sh /app/
 
 RUN chmod +x /app/entrypoint-configure-network.sh
 
-CMD ["/app/entrypoint-configure-network.sh"]
+RUN ["sh", "/app/entrypoint-configure-network.sh"]
 
 # Stage 5: Deploy L1 Contracts
 FROM common AS deploy-l1-contracts
@@ -52,7 +53,7 @@ COPY docker/scripts/entrypoint-deploy-l1-contracts.sh /app/
 
 RUN chmod +x /app/entrypoint-deploy-l1-contracts.sh
 
-CMD ["/app/entrypoint-deploy-l1-contracts.sh"]
+RUN ["sh", "/app/entrypoint-deploy-l1-contracts.sh"]
 
 # Stage 6: Configure L2
 FROM common AS configure-l2
@@ -61,7 +62,7 @@ COPY docker/scripts/entrypoint-l2-config.sh /app/
 
 RUN chmod +x /app/entrypoint-l2-config.sh
 
-CMD ["/app/entrypoint-l2-config.sh"]
+RUN ["sh", "/app/entrypoint-l2-config.sh"]
 
 # Stage 7: Initialize op-geth
 FROM common AS init-op-geth
@@ -70,4 +71,4 @@ COPY docker/scripts/entrypoint-init-op-geth.sh /app/
 
 RUN chmod +x /app/entrypoint-init-op-geth.sh
 
-CMD ["/app/entrypoint-init-op-geth.sh"]
+RUN ["sh", "/app/entrypoint-init-op-geth.sh"]
