@@ -1,7 +1,11 @@
-FROM golang:alpine
+# Use the official Go image as the base image
+FROM golang:alpine AS run-op-node
 
+# Set the working directory inside the container
 WORKDIR /app
 
-COPY Dockerfile.run-op-node /app/
+# Copy the source code for 9_run_op-node
+COPY cmd/9_run_op-node /app/
 
-RUN ["sh", "go run cmd/9_run_op-node/main.go"]
+# Define the command to run when the container starts
+CMD ["go run cmd/9_run_op-node/main.go "]

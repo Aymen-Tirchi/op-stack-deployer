@@ -1,7 +1,11 @@
-FROM golang:alpine
+# Use the official Go image as the base image
+FROM golang:alpine AS run-op-geth
 
+# Set the working directory inside the container
 WORKDIR /app
 
-COPY Dockerfile.run-op-geth /app/
+# Copy the source code for 8_run_op-geth
+COPY cmd/8_run_op-geth /app/
 
-RUN ["sh", "go run cmd/8_run_op-geth/main.go"]
+# Define the command to run when the container starts
+CMD ["go run cmd/8_run_op-geth/main.go"]

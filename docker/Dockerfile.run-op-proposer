@@ -1,7 +1,11 @@
-FROM golang:alpine
+# Use the official Go image as the base image
+FROM golang:alpine AS run-op-proposer
 
+# Set the working directory inside the container
 WORKDIR /app
 
-COPY Dockerfile.run-op-proposer /app/
+# Copy the source code for 11_run_op-proposer
+COPY cmd/11_run_op-proposer /app/
 
-RUN ["sh", "go run cmd/11_run_op-proposer/main.go"]
+# Define the command to run when the container starts
+CMD ["go run cmd/11_run_op-proposer/main.go"]

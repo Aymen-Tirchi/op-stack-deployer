@@ -48,8 +48,8 @@ services:
 
   run-op-geth:
     build:
-      context: ./docker
-      dockerfile: Dockerfile.run-op-geth
+      context: .
+      dockerfile: docker/Dockerfile.run-op-geth
     volumes:
       - ./op-stack-deployer:/app
     working_dir: /app
@@ -59,8 +59,8 @@ services:
 
   run-op-node:
     build:
-      context: ./docker
-      dockerfile: Dockerfile.run-op-node
+      context: .
+      dockerfile: docker/Dockerfile.run-op-node
     volumes:
       - ./op-stack-deployer:/app
     working_dir: /app
@@ -70,8 +70,8 @@ services:
 
   run-op-batcher:
     build:
-      context: ./docker
-      dockerfile: Dockerfile.run-op-batcher
+      context: .
+      dockerfile: docker/Dockerfile.run-op-batcher
     volumes:
       - ./op-stack-deployer:/app
     working_dir: /app
@@ -81,8 +81,8 @@ services:
 
   run-op-proposer:
     build:
-      context: ./docker
-      dockerfile: Dockerfile.run-op-proposer
+      context: .
+      dockerfile: docker/Dockerfile.run-op-proposer
     volumes:
       - ./op-stack-deployer:/app
     working_dir: /app
