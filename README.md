@@ -2,7 +2,7 @@
 
 OP Stack Deployer is a tool that simplifies setting up and deploying an OP Stack chain on the Ethereum Sepolia testnet. This guide will walk you through the steps required to spin up your OP Stack chain and perform tests or customize it for your specific needs.
 
-This project is based on the [Creating your own L2 rollup testnet]([https://stack.optimism.io/docs/build/getting-started/#](https://docs.optimism.io/operators/chain-operators/tutorials/create-l2-rollup)).
+This project is based on the [Creating your own L2 rollup testnet](https://docs.optimism.io/operators/chain-operators/tutorials/create-l2-rollup).
 
 ## Prerequisites
 
